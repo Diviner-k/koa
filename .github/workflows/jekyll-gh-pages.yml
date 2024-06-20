@@ -46,6 +46,30 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build the project
+      run: npm run build
+
+    - name: Start Koa server
+      run: |
+        npm start &
+        sleep 10  # Give the server some time to start
+
+    - name: Test server response
+      run: |
+        curl -v http://localhost:3000
+
+    - name: Keep server running
+      run: sleep infinity
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
