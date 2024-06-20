@@ -46,10 +46,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-     - name: Set up Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'  # 或你所需的 Node.js 版本
+          node-version: "20" # 或你所需的 Node.js 版本
 
       - name: Install dependencies
         run: npm install
@@ -74,5 +74,3 @@ jobs:
       - name: Stop Koa server
         run: |
           kill $(cat koa_pid.txt)
-
-
