@@ -58,4 +58,4 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-      - run: node ./src/app.js
+      - run: node ./src/main.js
