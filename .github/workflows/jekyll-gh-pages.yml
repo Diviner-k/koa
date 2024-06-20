@@ -50,28 +50,11 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: "16" # 或你所需的 Node.js 版本
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Start Koa server
-        run: |
-          node src/main.js &
-          echo $! > koa_pid.txt
-
-      - name: Wait for Koa server to start
-        run: sleep 5
-
-      - name: Run tests or other tasks
-        run: |
-          # 这里你可以运行测试或者其他任务
-          # 例如：npm test
-          echo "Running tasks..."
-
-      - name: Stop Koa server
-        run: |
-          kill $(cat koa_pid.txt)
+          node-version: "20.x"
+      - run: npm install
+      - run: npm run serve
+      -
