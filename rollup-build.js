@@ -18,6 +18,7 @@ const packageJSONForProduction = {
 
 const inputOptions = {
   input: "./src/main.js",
+
   plugins: [
     // 打包前先清空输出文件夹
     del({ targets: "./dist/*" }),
