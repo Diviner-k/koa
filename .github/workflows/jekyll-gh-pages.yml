@@ -59,3 +59,5 @@ jobs:
       - name: Install dependencies
         run: npm install
       - run: node ./src/main.js
+       - name: Wait for Koa server to start
+        run: sleep 5
