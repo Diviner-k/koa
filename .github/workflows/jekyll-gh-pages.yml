@@ -46,6 +46,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Deploy to GitHub Pages
+          id: deployment
+          uses: actions/deploy-pages@v4
+        
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -67,6 +71,7 @@ jobs:
           # 这里你可以运行测试或者其他任务
           # 例如：npm test
           echo "Running tasks..."
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
