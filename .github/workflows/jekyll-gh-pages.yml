@@ -49,11 +49,11 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-      - uses: actions/checkout@v4
-      - name: Use Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20.x"
-      - run: npm install
-      - run: npm run serve
+
+      - name: Install dependencies
+        run: npm install
+      - run: node ./src/app.js
