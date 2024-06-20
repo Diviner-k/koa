@@ -72,10 +72,6 @@ jobs:
           # 例如：npm test
           echo "Running tasks..."
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
       - name: Stop Koa server
         run: |
           kill $(cat koa_pid.txt)
