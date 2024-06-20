@@ -1,0 +1,64 @@
+koa
+├─ .env
+├─ .gitignore
+├─ .vscode
+│    └─ launch.json
+├─ package.json
+├─ public
+│    └─ upload
+│           └─ 0a14a06e5da3b341a34279000.jpg
+├─ reademe.md
+└─ src
+       ├─ app
+       │    ├─ errHandler.js
+       │    ├─ index.js
+       │    └─ succHandler.js
+       ├─ config
+       │    └─ config.default.js
+       ├─ constant
+       │    ├─ errType.js
+       │    └─ succType.js
+       ├─ controller
+       │    ├─ article.js
+       │    ├─ banner.js
+       │    ├─ upload.js
+       │    └─ user.js
+       ├─ db
+       │    └─ index.js
+       ├─ index.html
+       ├─ main.js
+       ├─ middleware
+       │    ├─ authMiddleware.js
+       │    ├─ uploadMIddleware.js
+       │    ├─ userMiddleware.js
+       │    ├─ validateMiddleware.js
+       │    └─ ws.js
+       ├─ model
+       │    ├─ articleModel.js
+       │    ├─ banner.js
+       │    ├─ comment.js
+       │    ├─ favorite.js
+       │    ├─ groupMember.js
+       │    ├─ like.js
+       │    ├─ message.js
+       │    ├─ offlineMessag.js
+       │    ├─ uploadModel.js
+       │    ├─ userModel.js
+       │    └─ userWebSocket.js
+       ├─ router
+       │    ├─ article.js
+       │    ├─ banner.js
+       │    ├─ index.js
+       │    ├─ public.js
+       │    ├─ upload.js
+       │    ├─ user.js
+       │    └─ webdscoket.js
+       ├─ service
+       │    ├─ articleServer.js
+       │    ├─ banner.js
+       │    ├─ userServer.js
+       │    └─ wsServer.js
+       ├─ validateParamsRules
+       │    └─ index.js
+       └─ websocket
+              └─ io.js
