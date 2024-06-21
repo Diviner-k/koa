@@ -59,8 +59,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install ngrok
-        run: npm install -g ngrok
+      - name: Install ngrok and jq
+        run: |
+          npm install -g ngrok
+          sudo apt-get update && sudo apt-get install -y jq
 
       - name: Start Koa server
         run: |
