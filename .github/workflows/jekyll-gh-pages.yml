@@ -58,6 +58,18 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-      - run: node ./src/main.js
-      - name: Wait for Koa server to start
+        
+        - name: Start Koa server
+        run: |
+          nohup node src/main.js &
+
+      - name: Wait for server to start
         run: sleep 5
+
+      - name: Test Koa server
+        run: curl -f http://localhost:3000
+
+      - name: Stop Koa server
+        if: success()
+        run: |
+          pkill -f "node src/main.js"
