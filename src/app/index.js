@@ -18,6 +18,10 @@ const app = websockify(new Koa());
 // const app = new Koa();
 // 实例化router
 
+app.use(async (ctx) => {
+  ctx.body = "Hello, World!111111111111";
+});
+
 // 注册 KoaBody 中间件 解析 body
 app.use(
   koaBody({
