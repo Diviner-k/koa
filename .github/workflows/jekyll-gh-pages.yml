@@ -72,7 +72,7 @@ jobs:
         run: |
           nohup node src/main.js &
           sleep 5
-          curl -f http://localhost:3000 || { echo 'Koa server failed to start'; exit 1; }
+          curl -f http://localhost:3000/hello || { echo 'Koa server failed to start'; exit 1; }
 
       - name: Start ngrok
         run: |
@@ -98,7 +98,7 @@ jobs:
 
       - name: Test Koa server via ngrok
         run: |
-          curl -f ${{ env.NGROK_URL }} || { echo 'Failed to access Koa server via ngrok'; exit 1; }
+          curl -f ${{ env.NGROK_URL }}/hello || { echo 'Failed to access Koa server via ngrok'; exit 1; }
 
       # - name: Stop Koa server
       #   if: success()
