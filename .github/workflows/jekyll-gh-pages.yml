@@ -59,6 +59,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install ngrok
+        run: npm install -g ngrok
+
       - name: Start Koa server
         run: |
           nohup node src/main.js &
@@ -66,8 +69,14 @@ jobs:
       - name: Wait for server to start
         run: sleep 5
 
-      - name: Test Koa server
-        run: curl -f http://localhost:3000
+      - name: Start ngrok
+        run: |
+          nohup ngrok http 3000 &
+
+      - name: Get ngrok URL
+        run: |
+          sleep 5
+          curl -s http://localhost:4040/api/tunnels | jq -r .tunnels[0].public_url
 
       - name: Stop Koa server
         if: success()
