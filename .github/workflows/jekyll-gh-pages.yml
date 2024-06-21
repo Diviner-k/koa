@@ -58,8 +58,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        
-        - name: Start Koa server
+
+      - name: Start Koa server
         run: |
           nohup node src/main.js &
 
