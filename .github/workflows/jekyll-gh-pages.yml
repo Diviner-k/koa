@@ -71,18 +71,14 @@ jobs:
       - name: Start Koa server
         run: |
           nohup node src/main.js &
-
-      - name: Wait for server to start
-        run: sleep 5
+          sleep 5
+          curl -f http://localhost:3000 || { echo 'Koa server failed to start'; exit 1; }
 
       - name: Start ngrok
         run: |
           nohup ngrok http 3000 > ngrok.log &
           sleep 10
           cat ngrok.log
-
-      - name: Wait for ngrok to start
-        run: sleep 10
 
       - name: Get ngrok URL
         run: |
@@ -102,7 +98,7 @@ jobs:
 
       - name: Test Koa server via ngrok
         run: |
-          curl -f ${{ env.NGROK_URL }}
+          curl -f ${{ env.NGROK_URL }} || { echo 'Failed to access Koa server via ngrok'; exit 1; }
 
       # - name: Stop Koa server
       #   if: success()
