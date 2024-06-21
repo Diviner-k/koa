@@ -81,9 +81,17 @@ jobs:
           echo "ngrok URL: $NGROK_URL"
           echo "NGROK_URL=$NGROK_URL" >> $GITHUB_ENV
 
+      - name: Validate ngrok URL
+        run: |
+          if [ -z "${{ env.NGROK_URL }}" ]; then
+            echo "ngrok URL is empty"
+            exit 1
+          fi
+          echo "ngrok URL: ${{ env.NGROK_URL }}"
+
       - name: Test Koa server via ngrok
         run: |
-          curl ${{ env.NGROK_URL }}
+          curl -f ${{ env.NGROK_URL }}
 
       # - name: Stop Koa server
       #   if: success()
